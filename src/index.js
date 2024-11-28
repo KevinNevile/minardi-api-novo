@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb'); // Para conectar diretamente ao MongoDB
+const { MongoClient } = require('mongodb'); // conectar diretamente ao MongoDB
 const db = require('./database/db'); // Conexão com o CouchDB
-const { calcularMetricas } = require('./services/log.service'); // Para calcular as métricas
+const { calcularMetricas } = require('./services/log.service'); // calcular as métricas
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ const pegarLogsDoMongoDB = async () => {
     const database = client.db(mongoDbName);
     const collection = database.collection(mongoCollection);
 
-    // Buscar os logs no MongoDB
+    // buscar os logs no MongoDB
     const logs = await collection.find().toArray();
 
     // Calcular métricas
